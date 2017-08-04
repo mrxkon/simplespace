@@ -9,10 +9,10 @@ if ( ! defined( 'WPINC' ) ) {
 /*-----------------------------------------------------------------------------------*/
 /* Define the version as a constant so we can easily replace it throughout the theme
 /*-----------------------------------------------------------------------------------*/
-define( 'WHITESPACE_VERSION', '1.0' );
+define( 'WHITESPACE_VERSION', '1.0.1' );
 define( 'BOOTSTRAP_VERSION', '3.3.7' );
-define( 'MATCHHEIGHT_VERSION', '0.7.2' );
 define( 'SWIPEBOX_VERSION', '1.4.4' );
+define( 'MATCHHEIGHT_VERSION', '0.7.2' );
 
 /*-----------------------------------------------------------------------------------*/
 /* Add theme supports
@@ -52,21 +52,21 @@ add_action( 'after_setup_theme', 'simplespace_register_menus' );
 /*-----------------------------------------------------------------------------------*/
 function simplespace_scripts()
 {
-	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/bootstrap/css/bootstrap.min.css', array(), BOOTSTRAP_VERSION );
+	wp_enqueue_style( 'simplespace-bootstrap', get_template_directory_uri() . '/bootstrap/css/bootstrap.min.css', array(), BOOTSTRAP_VERSION );
 
-	wp_enqueue_style( 'simplespace', get_template_directory_uri() . '/style.css', array(), WHITESPACE_VERSION );
+	wp_enqueue_style( 'simplespace-font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css', array(), WHITESPACE_VERSION );
 
-	wp_enqueue_style( 'font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css', array(), WHITESPACE_VERSION );
+	wp_enqueue_style( 'simplespace-fonts', 'https://fonts.googleapis.com/css?family=Fira+Mono:400,500,700|Marko+One&amp;subset=greek', array(), WHITESPACE_VERSION );
 
-	wp_enqueue_style( 'fonts', 'https://fonts.googleapis.com/css?family=Fira+Mono:400,500,700|Marko+One&amp;subset=greek', array(), WHITESPACE_VERSION );
+	wp_enqueue_style( 'simplespace-swipebox', get_template_directory_uri() . '/css/swipebox.min.css', array(), WHITESPACE_VERSION );
 
-	wp_enqueue_style( 'swipebox', get_template_directory_uri() . '/css/swipebox.min.css', array(), WHITESPACE_VERSION );
+	wp_enqueue_style( 'simplespace', get_stylesheet_uri(), array(), WHITESPACE_VERSION );
 
-	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/bootstrap/js/bootstrap.min.js', array( 'jquery' ), BOOTSTRAP_VERSION, true );
+	wp_enqueue_script( 'simplespace-bootstrap', get_template_directory_uri() . '/bootstrap/js/bootstrap.min.js', array( 'jquery' ), BOOTSTRAP_VERSION, true );
 
-	wp_enqueue_script( 'matchHeight', get_template_directory_uri() . '/js/jquery.matchHeight-min.js', array( 'jquery' ), MATCHHEIGHT_VERSION, true );
+	wp_enqueue_script( 'simplespace-matchHeight', get_template_directory_uri() . '/js/jquery.matchHeight-min.js', array( 'jquery' ), MATCHHEIGHT_VERSION, true );
 
-	wp_enqueue_script( 'swipebox', get_template_directory_uri() . '/js/jquery.swipebox.min.js', array( 'jquery' ), SWIPEBOX_VERSION, true );
+	wp_enqueue_script( 'simplespace-swipebox', get_template_directory_uri() . '/js/jquery.swipebox.min.js', array( 'jquery' ), SWIPEBOX_VERSION, true );
 
 	wp_enqueue_script( 'simplespace-scripts', get_template_directory_uri() . '/js/scripts.js', array( 'jquery' ), WHITESPACE_VERSION, true );
 
