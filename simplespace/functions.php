@@ -17,14 +17,15 @@ define( 'MATCHHEIGHT_VERSION', '0.7.2' );
 /*-----------------------------------------------------------------------------------*/
 /* Add theme supports
 /*-----------------------------------------------------------------------------------*/
+if ( ! isset( $content_width ) ) {
+	$content_width = 1200;
+}
+
 function simplespace_setup() {
 	add_theme_support( 'automatic-feed-links' );
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'title-tag' );
 	add_theme_support( 'custom-logo' );
-	if ( ! isset( $content_width ) ) {
-		$content_width = 1200;
-	}
 }
 add_action( 'after_setup_theme', 'simplespace_setup' );
 
