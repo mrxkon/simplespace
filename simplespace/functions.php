@@ -39,6 +39,14 @@ add_action(  'wp_enqueue_scripts', 'simplespace_load_comment_reply' );
 /*-----------------------------------------------------------------------------------*/
 /* register main menu
 /*-----------------------------------------------------------------------------------*/
+function simplespace_load_text_domain(){
+	load_theme_textdomain( 'simplespace', get_template_directory() . '/languages' );
+}
+add_action( 'after_setup_theme', 'simplespace_load_text_domain' );
+
+/*-----------------------------------------------------------------------------------*/
+/* register main menu
+/*-----------------------------------------------------------------------------------*/
 function simplespace_register_menus() {
 	register_nav_menus(
 		array(

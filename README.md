@@ -21,14 +21,6 @@ Simplespace WordPress Theme, Copyright 2017 Xenos Konstantinos
 
 Simplespace is distributed under the terms of the GNU GPL
 
-#### Installation
-
-1. In your admin panel, go to Appearance -> Themes and click the 'Add New' button.
-2. Type in Simplespace in the search form and press the 'Enter' key on your keyboard.
-3. Click on the 'Activate' button to use your new theme right away.
-4. Go to https://xkon.gr/simplespace/ for a guide on how to customize this theme.
-5. Navigate to Appearance > Customize in your admin panel and customize to taste.
-
 #### Licenses
 
 All items are licensed under the GNU General Public License v2; or, as the case
@@ -39,7 +31,18 @@ may be, individually noted below.
 3. Swipebox v1.4.4 | MIT License | https://github.com/brutaldesign/swipebox/
 4. MatchHeightJS v0.7.2 | MIT License | http://brm.io/jquery-match-height/
 
+#### Installation
+
+1. In your admin panel, go to Appearance -> Themes and click the 'Add New' button.
+2. Type in Simplespace in the search form and press the 'Enter' key on your keyboard.
+3. Click on the 'Activate' button to use your new theme right away.
+4. Go to https://xkon.gr/simplespace/ for a guide on how to customize this theme.
+5. Navigate to Appearance > Customize in your admin panel and customize to taste.
+
 #### Changelog
+
+##### 1.0.1
+Various Pre-release Fixes
 
 ##### 1.0.0
 Initial Release
