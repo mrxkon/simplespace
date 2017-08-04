@@ -2,9 +2,9 @@
 get_header();
 
 if ( is_tag() ) {
-	$what = '<small>' . __( 'tag:', 'simplespace' ) . ' </small>';
+	$what = esc_attr( 'tag:', 'simplespace' );
 } else {
-	$what = '<small>' . __( 'category:', 'simplespace' ) . ' </small>';
+	$what = esc_attr( 'category:', 'simplespace' );
 }
 ?>
 <div id="primary" class="row section">
@@ -12,7 +12,7 @@ if ( is_tag() ) {
 		<h1 class="post-title">
 			<?php
 			if ( get_theme_mod( 'simplespace_do_titles' ) == 'yes' ) {
-				echo $what;
+				echo '<small>' . esc_attr( $what ) . ' </small>';
 			}
 			single_cat_title();
 			?>
@@ -24,7 +24,7 @@ if ( is_tag() ) {
 	?>
 	<div class="grid-item list-post-holder col-sm-12">
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-			<div class="post-image"><?php the_post_thumbnail( 'full', ['class' => 'img-responsive', 'title' => get_the_title(), 'alt' => get_the_title() ] ); ?></div>
+			<div class="post-image"><?php the_post_thumbnail( 'full', array( 'class' => 'img-responsive', 'title' => get_the_title(), 'alt' => get_the_title() ) ); ?></div>
 			<h1 class="post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 			<div class="post-date"><i class="fa fa-calendar"></i> <?php the_date(); ?></div>
 			<div class="post-category"><i class="fa fa-th-list"></i> <?php the_category(', '); ?></div>

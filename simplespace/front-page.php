@@ -74,9 +74,10 @@ get_header();
 				<h2>
 					<?php
 					if ( get_theme_mod( 'simplespace_portfolio_widget_title' ) ) {
-						echo get_theme_mod( 'simplespace_portfolio_widget_title' );
+						$latest_title = get_theme_mod( 'simplespace_portfolio_widget_title' );
+						echo esc_attr( $latest_title );
 					} else {
-						echo __( 'Portfolio', 'simplespace' );
+						esc_attr_e( 'Portfolio', 'simplespace' );
 					}
 					?>
 				</h2>

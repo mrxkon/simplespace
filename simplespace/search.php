@@ -6,7 +6,7 @@ get_header();
 		<h1 class="post-title">
 			<?php
 			if ( get_theme_mod( 'simplespace_do_titles' ) == 'yes' ) {
-				echo '<small>' . __( 'searched for:', 'simplespace' ) . ' </small>';
+				echo '<small>' . esc_attr( 'searched for:', 'simplespace' ) . ' </small>';
 			}
 			the_search_query();
 			?>
@@ -18,7 +18,7 @@ get_header();
 		?>
 		<div class="list-post-holder col-sm-12">
 			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-				<div class="post-image"><?php the_post_thumbnail( 'full', ['class' => 'img-responsive', 'title' => get_the_title(), 'alt' => get_the_title() ] ); ?></div>
+				<div class="post-image"><?php the_post_thumbnail( 'full', array( 'class' => 'img-responsive', 'title' => get_the_title(), 'alt' => get_the_title() ) ); ?></div>
 				<h1 class="post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 				<div class="post-date"><i class="fa fa-calendar"></i> <?php the_date(); ?></div>
 				<div class="post-category"><i class="fa fa-th-list"></i> <?php the_category(', '); ?></div>

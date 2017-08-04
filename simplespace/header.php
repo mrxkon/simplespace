@@ -16,7 +16,7 @@
 				if ( has_custom_logo() ) {
 					$image = wp_get_attachment_image_src( get_theme_mod( 'custom_logo' ), 'full' );
 					$title = esc_attr( get_bloginfo( 'title' ) );
-					echo '<img class="logo" src="' . $image[0] . '" title="' . $title . '" alt="' . $title . '"/>';
+					echo '<img class="logo" src="' . esc_url( $image[0] ) . '" title="' . esc_attr( $title ) . '" alt="' . esc_attr( $title ) . '"/>';
 				} elseif ( get_theme_mod( 'simplespace_gravatar' ) ) {
 					$admin_email = get_theme_mod( 'simplespace_gravatar' );
 					$default = 'gravatar_default';
@@ -32,48 +32,48 @@
 					<h1 class="site-title">
 						<a href="<?php echo esc_url( home_url() ); ?>" title="<?php bloginfo( 'title' ); ?>"><?php bloginfo( 'title' ); ?></a>
 					</h1>
-					<span><?php echo get_bloginfo( 'description' ); ?></span>
+					<span><?php echo esc_html( get_bloginfo( 'description' ) ); ?></span>
 				</div>
 				<div class="social-media-icons">
 					<?php
 					if ( get_theme_mod( 'simplespace_sm_wp' ) ) {
-						echo '<a href="' . get_theme_mod( 'simplespace_sm_wp' ) .
-							'" title="' . __( 'Find me on WordPress', 'simplespace' ) .
+						echo '<a href="' . esc_url( get_theme_mod( 'simplespace_sm_wp' ) ) .
+							'" title="' . esc_attr( 'Find me on WordPress', 'simplespace' ) .
 							'"><i class="fa fa-wordpress"></i></a>';
 					}
 					if ( get_theme_mod( 'simplespace_sm_git' ) ) {
-						echo ' <a href="' . get_theme_mod( 'simplespace_sm_git' ) .
-							'" title="' . __( 'Find me on GitHub', 'simplespace' ) .
+						echo ' <a href="' . esc_url( get_theme_mod( 'simplespace_sm_git' ) ) .
+							'" title="' . esc_attr( 'Find me on GitHub', 'simplespace' ) .
 							'"><i class="fa fa-github"></i></a>';
 					}
 					if ( get_theme_mod( 'simplespace_sm_in' ) ) {
-						echo ' <a href="' . get_theme_mod( 'simplespace_sm_in' ) .
-							'" title="' . __( 'Find me on LinkedIn', 'simplespace' ) .
+						echo ' <a href="' . esc_url( get_theme_mod( 'simplespace_sm_in' ) ) .
+							'" title="' . esc_attr( 'Find me on LinkedIn', 'simplespace' ) .
 							'"><i class="fa fa-linkedin"></i></a>';
 					}
 					if ( get_theme_mod( 'simplespace_sm_da' ) ) {
-						echo ' <a href="' . get_theme_mod( 'simplespace_sm_da' ) .
-							'" title="' . __( 'Find me on DeviantArt', 'simplespace' ) .
+						echo ' <a href="' . esc_url( get_theme_mod( 'simplespace_sm_da' ) ) .
+							'" title="' . esc_attr( 'Find me on DeviantArt', 'simplespace' ) .
 							'"><i class="fa fa-deviantart"></i></a>';
 					}
 					if ( get_theme_mod( 'simplespace_sm_fb' ) ) {
-						echo ' <a href="' . get_theme_mod( 'simplespace_sm_fb' ) .
-							'" title="' . __( 'Find me on Facebook', 'simplespace' ) .
+						echo ' <a href="' . esc_url( get_theme_mod( 'simplespace_sm_fb' ) ) .
+							'" title="' . esc_attr( 'Find me on Facebook', 'simplespace' ) .
 							'"><i class="fa fa-facebook"></i></a>';
 					}
 					if ( get_theme_mod( 'simplespace_sm_tt' ) ) {
-						echo ' <a href="' . get_theme_mod( 'simplespace_sm_tt' ) .
-							'" title="' . __( 'Find me on Twitter', 'simplespace' ) .
+						echo ' <a href="' . esc_url( get_theme_mod( 'simplespace_sm_tt' ) ) .
+							'" title="' . esc_attr( 'Find me on Twitter', 'simplespace' ) .
 							'"><i class="fa fa-twitter"></i></a>';
 					}
 					if ( get_theme_mod( 'simplespace_sm_ig' ) ) {
-						echo ' <a href="' . get_theme_mod( 'simplespace_sm_ig' ) .
-							'" title="' . __( 'Find me on Instagram', 'simplespace' ) .
+						echo ' <a href="' . esc_url( get_theme_mod( 'simplespace_sm_ig' ) ) .
+							'" title="' . esc_attr( 'Find me on Instagram', 'simplespace' ) .
 							'"><i class="fa fa-instagram"></i></a>';
 					}
 					if ( get_theme_mod( 'simplespace_sm_gp' ) ) {
-						echo ' <a href="' . get_theme_mod( 'simplespace_sm_gp' ) .
-							'" title="' . __( 'Find me on Google+', 'simplespace' ) .
+						echo ' <a href="' . esc_url( get_theme_mod( 'simplespace_sm_gp' ) ) .
+							'" title="' . esc_attr( 'Find me on Google+', 'simplespace' ) .
 							'"><i class="fa fa-google-plus"></i></a>';
 					}
 					?>

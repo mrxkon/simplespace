@@ -9,7 +9,7 @@
 			$.ajax({
 				url: simplespaceAjax.ajaxurl,
 				data: {
-					'action' : 'fetch_index_post'
+					'action' : 'simplespace_fetch_index_post'
 				},
 				success:function(data) {
 					$('#ajax-post-content').html(data);

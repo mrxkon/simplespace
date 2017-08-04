@@ -519,7 +519,7 @@ function simplespace_fetch_index_post()
 {
 	$the_category = get_theme_mod( 'simplespace_the_category' );
 	if ( ! empty( $_REQUEST['id'] ) ) {
-		$post_id = $_REQUEST['id'];
+		$post_id = intval( $_REQUEST['id'] );
 		$query = new WP_Query(
 			array(
 				'p' => $post_id,
@@ -597,7 +597,7 @@ function simplespace_fetch_index_post()
 							$.ajax({
 								url: simplespaceAjax.ajaxurl,
 								data: {
-									'action' : 'fetch_index_post',
+									'action' : 'simplespace_fetch_index_post',
 									'id' : id
 								},
 								success:function(data) {
@@ -613,7 +613,7 @@ function simplespace_fetch_index_post()
 							$.ajax({
 								url: simplespaceAjax.ajaxurl,
 								data: {
-									'action' : 'fetch_index_post',
+									'action' : 'simplespace_fetch_index_post',
 									'id' : id
 								},
 								success:function(data) {

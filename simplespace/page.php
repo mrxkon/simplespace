@@ -11,7 +11,7 @@ get_header();
 				<h1 class="post-title">
 					<?php
 					if ( get_theme_mod( 'simplespace_do_titles' ) == 'yes' ) {
-						echo '<small>' . __( 'read about:', 'simplespace' ) . ' </small>';
+						echo '<small>' . esc_attr( 'read about:', 'simplespace' ) . ' </small>';
 					}
 					the_title();
 					?>

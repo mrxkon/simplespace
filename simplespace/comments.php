@@ -11,15 +11,7 @@ if ( post_password_required() ) {
 	?>
 		<h2 class="comments-title">
 			<?php
-			$comments_number = get_comments_number();
-			if ( '1' === $comments_number ) {
-				echo __( 'One comment for', 'simplespace' ) . ' ';
-				echo get_the_title();
-			} else {
-				echo number_format_i18n( $comments_number );
-				echo ' ' . __( 'comments for', 'simplespace' ) . ' ';
-				echo get_the_title();
-			}
+			esc_attr_e( 'Comments', 'simplespace' );
 			?>
 		</h2>
 		<div class="comment-list">
@@ -32,7 +24,7 @@ if ( post_password_required() ) {
 	the_comments_pagination();
 	}
 	if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) {
-	echo '<p class="no-comments">' . __( 'Comments are closed.', 'simplespace' ) . '</p>';
+	echo '<p class="no-comments">' . esc_attr__( 'Comments are closed.', 'simplespace' ) . '</p>';
 	}
 	comment_form();
 	?>

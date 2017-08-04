@@ -9,10 +9,9 @@ if ( is_active_sidebar( 'bottom_widgets' ) ) {
 	<div class="col-sm-10 text-left" id="credits">
 		<?php
 		if ( get_theme_mod( 'simplespace_footer_text' ) ) {
-			echo get_theme_mod( 'simplespace_footer_text' );
+			esc_attr( get_theme_mod( 'simplespace_footer_text' ) );
 		} else {
-			$title = esc_attr( get_bloginfo( 'title' ) );
-			echo '&copy; ' . $title;
+			echo '&copy; ' . esc_attr( get_bloginfo( 'title' ) );
 		}
 		if ( get_theme_mod( 'simplespace_show_creds' ) ) {
 		?>
@@ -26,7 +25,7 @@ if ( is_active_sidebar( 'bottom_widgets' ) ) {
 		?>
 	</div>
 	<div class="col-sm-2 text-right" id="back-to-top">
-		<a href="#toppage" title="<?php echo __( 'Back to Top', 'simplespace'); ?>"><i class="fa fa-arrow-up"></i> <?php echo __( 'Top', 'simplespace'); ?></a>
+		<a href="#toppage" title="<?php esc_attr_e( 'Back to Top', 'simplespace'); ?>"><i class="fa fa-arrow-up"></i> <?php esc_attr_e( 'Top', 'simplespace'); ?></a>
 	</div>
 </div>
 </div>
