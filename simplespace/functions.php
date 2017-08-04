@@ -53,27 +53,36 @@ add_action( 'after_setup_theme', 'simplespace_register_menus' );
 /*-----------------------------------------------------------------------------------*/
 function simplespace_scripts()
 {
-	wp_enqueue_style( 'simplespace-bootstrap', get_template_directory_uri() . '/bootstrap/css/bootstrap.min.css', array(), BOOTSTRAP_VERSION );
+	$sp_min_bs_css = ( defined( 'WP_DEBUG' ) && WP_DEBUG ) ? '/bootstrap/css/bootstrap.css' : '/bootstrap/css/bootstrap.min.css';
+	wp_enqueue_style( 'simplespace-bootstrap', get_template_directory_uri() . $sp_min_bs_css, array(), BOOTSTRAP_VERSION );
 
 	wp_enqueue_style( 'simplespace-font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css', array(), WHITESPACE_VERSION );
 
 	wp_enqueue_style( 'simplespace-fonts', 'https://fonts.googleapis.com/css?family=Fira+Mono:400,500,700|Marko+One&amp;subset=greek', array(), WHITESPACE_VERSION );
 
-	wp_enqueue_style( 'simplespace-swipebox', get_template_directory_uri() . '/css/swipebox.min.css', array(), WHITESPACE_VERSION );
+	$sp_min_sb_css = ( defined( 'WP_DEBUG' ) && WP_DEBUG ) ? '/css/swipebox.css' : '/css/swipebox.min.css';
+	wp_enqueue_style( 'simplespace-swipebox', get_template_directory_uri() . $sp_min_sb_css, array(), WHITESPACE_VERSION );
 
 	wp_enqueue_style( 'simplespace', get_stylesheet_uri(), array(), WHITESPACE_VERSION );
 
-	wp_enqueue_script( 'simplespace-bootstrap', get_template_directory_uri() . '/bootstrap/js/bootstrap.min.js', array( 'jquery' ), BOOTSTRAP_VERSION, true );
+	$sp_min_bs_js = ( defined( 'WP_DEBUG' ) && WP_DEBUG ) ? '/bootstrap/js/bootstrap.js' : '/bootstrap/js/bootstrap.min.js';
+	wp_enqueue_script( 'simplespace-bootstrap', get_template_directory_uri() . $sp_min_bs_js, array( 'jquery' ), BOOTSTRAP_VERSION, true );
 
-	wp_enqueue_script( 'simplespace-matchHeight', get_template_directory_uri() . '/js/jquery.matchHeight-min.js', array( 'jquery' ), MATCHHEIGHT_VERSION, true );
+	$sp_min_mh_js = ( defined( 'WP_DEBUG' ) && WP_DEBUG ) ? '/js/jquery.matchHeight.js' : '/js/jquery.matchHeight.min.js';
+	wp_enqueue_script( 'simplespace-matchHeight', get_template_directory_uri() . $sp_min_mh_js, array( 'jquery' ), MATCHHEIGHT_VERSION, true );
 
-	wp_enqueue_script( 'simplespace-swipebox', get_template_directory_uri() . '/js/jquery.swipebox.min.js', array( 'jquery' ), SWIPEBOX_VERSION, true );
+	$sp_min_sb_js = ( defined( 'WP_DEBUG' ) && WP_DEBUG ) ? '/js/jquery.swipebox.js' : '/js/jquery.swipebox.min.js';
+	wp_enqueue_script( 'simplespace-swipebox', get_template_directory_uri() . $sp_min_sb_js, array( 'jquery' ), SWIPEBOX_VERSION, true );
 
 	wp_enqueue_script( 'simplespace-scripts', get_template_directory_uri() . '/js/scripts.js', array( 'jquery' ), WHITESPACE_VERSION, true );
 
 	wp_enqueue_script( 'simplespace-ajax-request', get_template_directory_uri() . '/js/ajax.js', array( 'jquery' ), WHITESPACE_VERSION );
 
-	wp_localize_script( 'simplespace-ajax-request', 'simplespaceAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+	wp_localize_script( 'simplespace-ajax-request', 'simplespaceAjax',
+		array(
+			'ajaxurl' => admin_url( 'admin-ajax.php' ),
+		)
+	);
 }
 
 add_action( 'wp_enqueue_scripts', 'simplespace_scripts' );
@@ -530,21 +539,23 @@ function simplespace_fetch_index_post()
 		while ( $query->have_posts() ) {
 			$query->the_post();
 			echo '<div class="ajax-post_image">' . get_the_post_thumbnail( get_the_ID(), 'full', array( 'class' => 'img-responsive' ) ) . '</div>';
-			echo '<div class="ajax-post-title"><h3><a href="' . get_the_permalink() . '" title="' . get_the_title() . '">' . get_the_title() . '</a></h3></div> ';
+			echo '<div class="ajax-post-title"><h3><a href="' . esc_url( get_the_permalink() ) . '" title="' . get_the_title() . '">' . get_the_title() . '</a></h3></div> ';
 			echo '<div class="ajax-post-description">' . the_excerpt() . '</div> ';
 			echo '<div class="ajax-post-date"><i class="fa fa-calendar"></i> ' . get_the_date() . '</div>';
 			echo '<div class="ajax-post-category"><i class="fa fa-th-list"></i> ';
 			the_category( ', ' );
 			echo '</div>';
-			echo '<div class="ajax-post-tags">' . get_the_tag_list( '<i class="fa fa-tag"></i> ', ', ' ) . '</div> ';
+			echo '<div class="ajax-post-tags">';
+			the_tags( '<i class="fa fa-tag"></i> ' );
+			echo '</div> ';
 			echo '<div class="ajax-post-pagination">';
 			$prev_post = get_previous_post( true );
 			$next_post = get_next_post( true );
 			if ( ! empty( $prev_post ) ) {
-				echo '<a href="#" class="pull-left ajax-prev-post" data-id="' . $prev_post->ID . '"><i class="fa fa-arrow-left"></i> ' . __( 'Previous', 'simplespace' ) . '</a>';
+				echo '<a href="#" class="pull-left ajax-prev-post" data-id="' . intval( $prev_post->ID ) . '"><i class="fa fa-arrow-left"></i> ' . esc_attr( 'Previous', 'simplespace' ) . '</a>';
 			}
 			if ( ! empty( $next_post ) ) {
-				echo '<a href="#" class="pull-right ajax-next-post" data-id="' . $next_post->ID . '">' . __( 'Next', 'simplespace' ) . ' <i class="fa fa-arrow-right"></i></a>';
+				echo '<a href="#" class="pull-right ajax-next-post" data-id="' . intval( $next_post->ID ) . '">' . esc_attr( 'Next', 'simplespace' ) . ' <i class="fa fa-arrow-right"></i></a>';
 			}
 			echo '</div>';
 		}
@@ -558,21 +569,23 @@ function simplespace_fetch_index_post()
 		while ( $query->have_posts() ) {
 			$query->the_post();
 			echo '<div class="ajax-post_image">' . get_the_post_thumbnail( get_the_ID(), 'full', array( 'class' => 'img-responsive' ) ) . '</div>';
-			echo '<div class="ajax-post-title"><h3><a href="' . get_the_permalink() . '" title="' . get_the_title() . '">' . get_the_title() . '</a></h3></div> ';
+			echo '<div class="ajax-post-title"><h3><a href="' . esc_url( get_the_permalink() ) . '" title="' . get_the_title() . '">' . get_the_title() . '</a></h3></div> ';
 			echo '<div class="ajax-post-description">' . the_excerpt() . '</div> ';
 			echo '<div class="ajax-post-date"><i class="fa fa-calendar"></i> ' . get_the_date() . '</div>';
 			echo '<div class="ajax-post-category"><i class="fa fa-th-list"></i> ';
 			the_category( ', ' );
 			echo '</div>';
-			echo '<div class="ajax-post-tags">' . get_the_tag_list( '<i class="fa fa-tag"></i> ', ', ' ) . '</div> ';
+			echo '<div class="ajax-post-tags">';
+			the_tags( '<i class="fa fa-tag"></i> ' );
+			echo '</div> ';
 			echo '<div class="ajax-post-pagination">';
 			$prev_post = get_previous_post( true );
 			$next_post = get_next_post( true );
 			if ( ! empty( $prev_post ) ) {
-				echo '<a href="#" class="pull-left ajax-prev-post" data-id="' . $prev_post->ID . '"><i class="fa fa-arrow-left"></i> ' . __( 'Previous', 'simplespace' ) . '</a>';
+				echo '<a href="#" class="pull-left ajax-prev-post" data-id="' . intval( $prev_post->ID ) . '"><i class="fa fa-arrow-left"></i> ' . esc_attr( 'Previous', 'simplespace' ) . '</a>';
 			}
 			if ( ! empty( $next_post ) ) {
-				echo '<a href="#" class="pull-right ajax-next-post" data-id="' . $next_post->ID . '">' . __( 'Next', 'simplespace' ) . ' <i class="fa fa-arrow-right"></i></a>';
+				echo '<a href="#" class="pull-right ajax-next-post" data-id="' . intval( $next_post->ID ) . '">' . esc_attr( 'Next', 'simplespace' ) . ' <i class="fa fa-arrow-right"></i></a>';
 			}
 			echo '</div>';
 		}
@@ -655,11 +668,11 @@ function simplespace_comment( $comment, $args, $depth ) {
 	echo '</div>';
 	echo '<div class="comment-author-name">';
 	echo get_comment_author_link() . ' ';
-	echo __( 'said:', 'simplespace' );
+	echo esc_attr( 'said:', 'simplespace' );
 	echo '</div>';
 	echo '</div>';
 	if ( $comment->comment_approved == '0' ) {
-		echo '<em class="comment-awaiting-moderation">' . __( 'Your comment is awaiting moderation.', 'simplespace' ) . '</em>';
+		echo '<em class="comment-awaiting-moderation">' . esc_attr( 'Your comment is awaiting moderation.', 'simplespace' ) . '</em>';
 		echo '<br />';
 	}
 	echo '<div class="comment-meta commentmetadata">';
