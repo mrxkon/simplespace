@@ -168,6 +168,10 @@ a:hover {
 	text-decoration: underline;
 }
 
+hr {
+	clear: both;
+}
+
 /* Header */
 
 #header {
