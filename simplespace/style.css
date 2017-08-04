@@ -1,0 +1,452 @@
+/*
+ * Theme Name:      Simplespace
+ * Theme URI:       https://xkon.gr/simplespace/
+ * Author:          Xenos (xkon) Konstantinos
+ * Author URI:      https://xkon.gr/
+ * Description:     A simple, fast and beautiful simplespace theme.
+ * Version:         1.0.0
+ * License:         GPL-2.0+
+ * License URI:     http://www.gnu.org/licenses/gpl-2.0.txt
+ * Text Domain:     simplespace
+ * Tags:            portfolio, blog, theme-options, footer-widgets, custom-logo, custom-menu, right-sidebar, featured-images, translation-ready, one-column, two-columns
+*/
+
+/* =WordPress Core
+-------------------------------------------------------------- */
+.alignnone {
+	margin: 5px 20px 20px 0;
+}
+
+.aligncenter,
+div.aligncenter {
+	display: block;
+	margin: 5px auto 5px auto;
+}
+
+.alignright {
+	float: right;
+	margin: 5px 0 20px 20px;
+}
+
+.alignleft {
+	float: left;
+	margin: 5px 20px 20px 0;
+}
+
+a img.alignright {
+	float: right;
+	margin: 5px 0 20px 20px;
+}
+
+a img.alignnone {
+	margin: 5px 20px 20px 0;
+}
+
+a img.alignleft {
+	float: left;
+	margin: 5px 20px 20px 0;
+}
+
+a img.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.wp-caption {
+	background: #fff;
+	border: 1px solid #f0f0f0;
+	max-width: 96%; /* Image does not overflow the content area */
+	padding: 5px 3px 10px;
+	text-align: center;
+}
+
+.wp-caption.alignnone {
+	margin: 5px 20px 20px 0;
+}
+
+.wp-caption.alignleft {
+	margin: 5px 20px 20px 0;
+}
+
+.wp-caption.alignright {
+	margin: 5px 0 20px 20px;
+}
+
+.wp-caption img {
+	border: 0 none;
+	height: auto;
+	margin: 0;
+	max-width: 98.5%;
+	padding: 0;
+	width: auto;
+}
+
+.wp-caption p.wp-caption-text {
+	font-size: 11px;
+	line-height: 17px;
+	margin: 0;
+	padding: 0 4px 5px;
+}
+
+/* Text meant only for screen readers. */
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute !important;
+	white-space: nowrap;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+}
+
+.screen-reader-text:focus {
+	background-color: #f1f1f1;
+	border-radius: 3px;
+	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+	clip: auto !important;
+	color: #21759b;
+	display: block;
+	font-size: 14px;
+	font-size: 0.875rem;
+	font-weight: bold;
+	height: auto;
+	left: 5px;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	top: 5px;
+	width: auto;
+	z-index: 100000; /* Above WP toolbar. */
+}
+
+.sticky {
+}
+
+.gallery-caption {
+}
+
+.bypostauthor {
+}
+
+.size-auto,
+.size-full,
+.size-large,
+.size-medium,
+.size-thumbnail {
+	max-width: 100%;
+	height: auto;
+}
+
+/* General */
+
+body {
+	font-family: 'Fira Mono', monospace;
+	color: #444;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Marko One', serif;
+}
+
+.container {
+	max-width: 960px;
+}
+
+.section {
+	padding: 3rem 0 3rem 0;
+	margin: 0 0 6rem 0;
+}
+
+a {
+	text-decoration: none;
+	color: #0fa0ce;
+}
+
+a:hover {
+	color: #337ab7 !important;
+	text-decoration: underline;
+}
+
+/* Header */
+
+#header {
+	margin-top: 3rem;
+	margin-bottom: 3rem;
+	padding-top: 3rem;
+	padding-bottom: 3rem;
+}
+
+#gravatar {
+	overflow: hidden;
+	width: 100px;
+	height: 100px;
+	margin: 0;
+	float: left;
+}
+
+#brand {
+	float: right;
+	width: calc(100% - 120px);
+	padding-left: 20px;
+	margin-top: 5px;
+}
+
+#brand h1 {
+	color: #444;
+	margin: 0;
+	padding: 0;
+}
+
+#brand h1 a {
+	color: #444;
+	text-decoration: none;
+}
+
+/* Footer */
+
+#footer {
+	border-top: 2px #444 solid;
+	padding-top: 3rem;
+	padding-bottom: 3rem;
+}
+
+#footer #back-to-top a {
+	color: #444;
+	text-decoration: none;
+}
+
+/* Nav */
+
+#nav {
+	border-bottom: 2px #444 solid;
+	padding: 0 !important;
+	margin-bottom: 3rem;
+}
+
+#nav ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#nav ul li {
+	margin: 1rem 0 1rem 0;
+	display: inline-block;
+}
+
+#nav ul li:before {
+	content: "\2022";
+	width: 2rem;
+	text-align: center;
+	display: inline-block;
+}
+
+#nav ul a {
+	text-decoration: none;
+	color: #444;
+}
+
+#nav ul a:hover {
+	text-decoration: none;
+}
+
+#nav ul .current_page_item a {
+	color: #0fa0ce;
+}
+
+/* Social Media Icons */
+.social-media-icons {
+	font-size: 1.5em;
+}
+
+.social-media-icons a {
+	color: #444;
+}
+
+/* Widgets & Sidebar */
+
+#sidebar {
+	background-color: #f3f3f3;
+	padding-bottom: 2rem;
+}
+
+.sidebar-widget {
+	margin-top: 3rem;
+}
+
+.top-widget-area {
+	padding: 0;
+}
+
+.bottom-widget {
+	margin-bottom: 3rem;
+}
+
+.ajax-post-pagination,
+.ajax-post-date {
+	margin-top: 2rem;
+}
+
+.ajax-post-pagination {
+	display: table;
+	width: 100%;
+}
+
+/* Posts */
+
+.post-title {
+	margin-top: 0;
+	margin-bottom: 3rem;
+}
+
+.post-content {
+	margin-top: 3rem;
+}
+
+.post-holder {
+	margin-top: 6rem;
+}
+
+.list-title-holder {
+	margin-top: 6rem;
+	margin-bottom: 3rem;
+}
+
+.list-post-holder {
+	margin-bottom: 6rem;
+}
+
+.blog-pagination {
+	margin-top: 6rem;
+}
+
+.post-image {
+	margin-bottom: 3rem;
+}
+
+.attachment-content {
+	margin-top: 3rem;
+}
+
+/* 404 page */
+
+.fourofour-image {
+	margin: 0 auto;
+}
+
+/* forms */
+
+.btn-primary {
+	background-color: #0fa0ce;
+	border-color: #0fa0ce;
+}
+
+/* comments */
+
+.comments-area {
+	margin-top: 6rem;
+}
+
+.comment-author.vcard {
+	margin-bottom: 3rem;
+}
+
+.comment-avatar {
+	display: inline-block;
+	width: 32px;
+	float: left;
+}
+
+.comment-author-name {
+	display: inline-block;
+	width: calc(100% - 52px);
+	float: right;
+	text-align: left;
+	margin-top: 0.7rem;
+}
+
+.commentmetadata {
+	clear: both;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+}
+
+.comment-form-comment label {
+	clear: both;
+}
+
+/* gallery */
+
+.gall-img {
+	margin-bottom: 3rem;
+}
+
+/* videos */
+
+video {
+	width: 100% !important;
+	height: auto !important;
+}
+
+/* Responsive */
+
+/* Medium devices (desktops, 992px and up) */
+@media (max-width: 992px) {
+
+	.top-widget,
+	.bottom-widget {
+		margin-bottom: 3rem;
+	}
+
+}
+
+@media (min-width: 768px) {
+	.container {
+		padding-right: 15px;
+		padding-left: 15px;
+		margin-right: auto;
+		margin-left: auto;
+		width: auto;
+	}
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+	#sidebar {
+		padding-top: 1rem;
+		padding-bottom: 5rem;
+	}
+
+	#gravatar {
+		margin: 0 auto;
+		float: none;
+		clear: both;
+	}
+
+	#brand {
+		clear: both;
+		width: 100%;
+		margin-top: 2rem;
+		text-align: center;
+		padding: 0;
+	}
+
+	#footer #credits {
+		text-align: center;
+	}
+
+	#footer #back-to-top {
+		text-align: center;
+		margin-top: 3rem;
+	}
+
+	.post-title small {
+		clear: both;
+		display: block;
+		margin-bottom: 1rem;
+	}
+
+	.gall-img {
+		height: auto !important;
+	}
+}
