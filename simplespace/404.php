@@ -6,7 +6,7 @@ get_header();
 		<?php
 		if ( get_theme_mod( 'simplespace_404_img' ) ) {
 			echo '<div class="col-sm-12 text-center">';
-			echo '<img class="fourofour-image img-responsive" src="' . esc_url ( get_theme_mod( 'simplespace_404_img' ) ) . '" alt="Page not found"/>';
+			echo '<img class="fourofour-image img-responsive" src="' . esc_url( get_theme_mod( 'simplespace_404_img' ) ) . '" alt="Page not found"/>';
 			echo '</div>';
 		}
 		?>
