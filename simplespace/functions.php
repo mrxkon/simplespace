@@ -484,6 +484,8 @@ function simplespace_register_areas()
 
 	if ( get_theme_mod( 'simplespace_top_widget_column' ) ) {
 		$topWidget = get_theme_mod( 'simplespace_top_widget_column' );
+	} else {
+		$topWidget = 'col-sm-6 col-md-3';
 	}
 
 	register_sidebar( array(
@@ -497,6 +499,8 @@ function simplespace_register_areas()
 
 	if ( get_theme_mod( 'simplespace_bottom_widget_column' ) ) {
 		$bottomWidget = get_theme_mod( 'simplespace_bottom_widget_column' );
+	} else {
+		$bottomWidget = 'col-sm-6 col-md-3';
 	}
 
 	register_sidebar( array(
