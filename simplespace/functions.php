@@ -17,11 +17,16 @@ define( 'SWIPEBOX_VERSION', '1.4.4' );
 /*-----------------------------------------------------------------------------------*/
 /* Add theme supports
 /*-----------------------------------------------------------------------------------*/
-add_theme_support( 'automatic-feed-links' );
-add_theme_support( 'post-thumbnails' );
-add_theme_support( 'title-tag' );
-
-if ( ! isset( $content_width ) ) $content_width = 1200;
+function simplespace_setup() {
+	add_theme_support( 'automatic-feed-links' );
+	add_theme_support( 'post-thumbnails' );
+	add_theme_support( 'title-tag' );
+	add_theme_support( 'custom-logo' );
+	if ( ! isset( $content_width ) ) {
+		$content_width = 1200;
+	}
+}
+add_action( 'after_setup_theme', 'simplespace_setup' );
 
 function simplespace_load_comment_reply() {
 	if ( is_singular() && comments_open() && ( get_option( 'thread_comments' ) == 1) ) {
@@ -33,11 +38,14 @@ add_action(  'wp_enqueue_scripts', 'simplespace_load_comment_reply' );
 /*-----------------------------------------------------------------------------------*/
 /* register main menu
 /*-----------------------------------------------------------------------------------*/
-register_nav_menus(
-	array(
-		'primary' => __( 'Primary Menu', 'simplespace' ),
-	)
-);
+function simplespace_register_menus() {
+	register_nav_menus(
+		array(
+			'primary' => __( 'Primary Menu', 'simplespace' ),
+		)
+	);
+}
+add_action( 'after_setup_theme', 'simplespace_register_menus' );
 
 /*-----------------------------------------------------------------------------------*/
 /* Enqueue Styles and Scripts
@@ -61,6 +69,10 @@ function simplespace_scripts()
 	wp_enqueue_script( 'swipebox', get_template_directory_uri() . '/js/jquery.swipebox.min.js', array( 'jquery' ), SWIPEBOX_VERSION, true );
 
 	wp_enqueue_script( 'simplespace-scripts', get_template_directory_uri() . '/js/scripts.js', array( 'jquery' ), WHITESPACE_VERSION, true );
+
+	wp_enqueue_script( 'simplespace-ajax-request', get_template_directory_uri() . '/js/ajax.js', array( 'jquery' ), WHITESPACE_VERSION );
+
+	wp_localize_script( 'simplespace-ajax-request', 'simplespaceAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
 }
 
 add_action( 'wp_enqueue_scripts', 'simplespace_scripts' );
@@ -80,23 +92,6 @@ function simplespace_customize( $wp_customize )
 			'title' => __( 'Simplespace Options', 'simplespace' ),
 			'priority' => 100,
 			'capability' => 'edit_theme_options',
-		)
-	);
-
-	$wp_customize->add_setting( 'simplespace_logo',
-		array(
-			'default' => '',
-			'sanitize_callback' => 'sanitize_customizer_url',
-		)
-	);
-
-	$wp_customize->add_control(
-		new WP_Customize_Image_Control( $wp_customize, 'simplespace_logo',
-			array(
-				'label' => __( 'Upload Logo', 'simplespace' ),
-				'section' => 'simplespace_options',
-				'settings' => 'simplespace_logo',
-			)
 		)
 	);
 
@@ -599,7 +594,7 @@ function fetch_index_post()
 						function getPrevPost(id) {
 
 							$.ajax({
-								url: ajaxurl,
+								url: simplespaceAjax.ajaxurl,
 								data: {
 									'action' : 'fetch_index_post',
 									'id' : id
@@ -615,7 +610,7 @@ function fetch_index_post()
 							var id = $('.ajax-next-post').data('id');
 				
 							$.ajax({
-								url: ajaxurl,
+								url: simplespaceAjax.ajaxurl,
 								data: {
 									'action' : 'fetch_index_post',
 									'id' : id

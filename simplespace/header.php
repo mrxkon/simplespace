@@ -6,9 +6,6 @@
 	<link rel="profile" href="http://gmpg.org/xfn/11"/>
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>"/>
 	<?php wp_head(); ?>
-	<script>
-		ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';
-	</script>
 </head>
 <body <?php body_class(); ?>>
 <div class="container">
@@ -16,8 +13,10 @@
 		<div class="col-sm-12">
 			<div id="gravatar">
 				<?php
-				if ( get_theme_mod( 'simplespace_logo' ) ) {
-					echo '<img class="logo" src="' . get_theme_mod( 'simplespace_logo' ) . '" alt="' . bloginfo( 'title' ) . '"/>';
+				if ( has_custom_logo() ) {
+					$image = wp_get_attachment_image_src( get_theme_mod( 'custom_logo' ), 'full' );
+					$title = esc_attr( get_bloginfo( 'title' ) );
+					echo '<img class="logo" src="' . $image[0] . '" title="' . $title . '" alt="' . $title . '"/>';
 				} elseif ( get_theme_mod( 'simplespace_gravatar' ) ) {
 					$admin_email = get_theme_mod( 'simplespace_gravatar' );
 					$default = 'gravatar_default';

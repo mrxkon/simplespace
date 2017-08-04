@@ -1,4 +1,4 @@
-(function( $ ) {
+(function ( $ ) {
 
 	"use strict";
 
@@ -6,81 +6,66 @@
 	// 	$( '.the-content' ).fitVids();
 	// });
 
-	$( 'a[href*=\\#toppage]' ).on( 'click', function( event ) {
+	$( 'a[href*=\\#toppage]' ).on( 'click', function ( event ) {
 		event.preventDefault();
 		$( 'html, body' ).animate( {
-				scrollTop: 0
-			}, 500 );
+			scrollTop: 0
+		}, 500 );
 		return false;
-	});
+	} );
 
 	// Sidebar Pagination Links
-	$(document).ready(function() {
+	$( document ).ready( function () {
 
 		$( '.swipebox' ).swipebox();
 
-		$('iframe').wrap('<figure></figure>');
+		$( 'iframe' ).wrap( '<figure></figure>' );
 
-		$('a[href*=".png"], a[href*=".gif"], a[href*=".jpg"], a[href*=".jpeg"]').addClass('swipebox');
+		$( 'a[href*=".png"], a[href*=".gif"], a[href*=".jpg"], a[href*=".jpeg"]' ).addClass( 'swipebox' );
 
-		$('.gall-img').matchHeight(false);
+		$( '.gall-img' ).matchHeight( false );
 
-		$('table').addClass('table table-hover');
+		$( 'table' ).addClass( 'table table-hover' );
 
-		$('img').addClass('img-responsive');
+		$( 'img' ).addClass( 'img-responsive' );
 
-		$('input:submit').addClass('btn btn-primary');
+		$( 'input:submit' ).addClass( 'btn btn-primary' );
 
-		$('input:text').addClass('form-control');
-		$('input:text').wrap('<div class="form-group"></div>');
-		$('textarea').addClass('form-control');
+		$( 'input:text' ).addClass( 'form-control' );
 
-		function getIndexPost() {
+		$( 'input:text' ).wrap( '<div class="form-group"></div>' );
 
-			var id = $(this).data('id');
+		$( 'textarea' ).addClass( 'form-control' );
+	} );
 
-			$.ajax({
-				url: ajaxurl,
-				data: {
-					'action' : 'fetch_index_post'
-				},
-				success:function(data) {
-					$('#ajax-post-content').html(data);
-				}
-			});
-		}
+	$( function () {
 
-		getIndexPost();
-	});
+		var $allVideos = $( "iframe[src*='//player.vimeo.com'], iframe[src*='//www.youtube.com'], object, embed" ),
+			$fluidEl = $( "figure" );
 
-	$(function() {
+		$allVideos.each( function () {
 
-		var $allVideos = $("iframe[src*='//player.vimeo.com'], iframe[src*='//www.youtube.com'], object, embed"),
-			$fluidEl = $("figure");
-
-		$allVideos.each(function() {
-
-			$(this)
+			$( this )
 			// jQuery .data does not work on object/embed elements
-				.attr('data-aspectRatio', this.height / this.width)
-				.removeAttr('height')
-				.removeAttr('width');
+				.attr( 'data-aspectRatio', this.height / this.width )
+				.removeAttr( 'height' )
+				.removeAttr( 'width' );
 
-		});
+		} );
 
-		$(window).resize(function() {
+		$( window ).resize( function () {
 
-			$allVideos.each(function() {
+			$allVideos.each( function () {
 
-				var $el = $(this);
-				var newWidth = $el.parents('figure').width();
+				var $el = $( this );
+				var newWidth = $el.parents( 'figure' ).width();
 				$el
-					.width(newWidth)
-					.height(newWidth * $el.attr('data-aspectRatio'));
+					.width( newWidth )
+					.height( newWidth * $el.attr( 'data-aspectRatio' ) );
 
-			});
+			} );
 
-		}).resize();
-	});
+		} ).resize();
+	} );
 
-}(jQuery));
+}( jQuery ));

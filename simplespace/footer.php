@@ -11,7 +11,8 @@ if ( is_active_sidebar( 'bottom_widgets' ) ) {
 		if ( get_theme_mod( 'simplespace_footer_text' ) ) {
 			echo get_theme_mod( 'simplespace_footer_text' );
 		} else {
-			echo '&copy; '; bloginfo( 'title' );
+			$title = esc_attr( get_bloginfo( 'title' ) );
+			echo '&copy; ' . $title;
 		}
 		if ( get_theme_mod( 'simplespace_show_creds' ) ) {
 		?>
