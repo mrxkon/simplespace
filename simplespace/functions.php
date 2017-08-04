@@ -29,6 +29,9 @@ function simplespace_setup() {
 }
 add_action( 'after_setup_theme', 'simplespace_setup' );
 
+/*-----------------------------------------------------------------------------------*/
+/* Comment Replies
+/*-----------------------------------------------------------------------------------*/
 function simplespace_load_comment_reply() {
 	if ( is_singular() && comments_open() && ( get_option( 'thread_comments' ) == 1) ) {
 		wp_enqueue_script( 'comment-reply', 'wp-includes/js/comment-reply', array(), false, true );
@@ -37,7 +40,7 @@ function simplespace_load_comment_reply() {
 add_action(  'wp_enqueue_scripts', 'simplespace_load_comment_reply' );
 
 /*-----------------------------------------------------------------------------------*/
-/* register main menu
+/* Text Domain
 /*-----------------------------------------------------------------------------------*/
 function simplespace_load_text_domain(){
 	load_theme_textdomain( 'simplespace', get_template_directory() . '/languages' );
