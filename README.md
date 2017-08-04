@@ -1,10 +1,25 @@
 ### Simplespace - WordPress Theme
+Contributors: xkon
+Requires at least: WordPress 4.7
+Tested up to: WordPress 4.8.1
+Version: 1.0.1
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: portfolio, blog, theme-options, footer-widgets, custom-logo, custom-menu, right-sidebar, featured-images, translation-ready, one-column, two-columns
+
+A simple, fast and beautiful whitespace theme.
 
 #### Description
 
 A simple, fast and beautiful whitespace theme.
 
 For more information about Simplespace please go to https://xkon.gr/simplespace/.
+
+#### Copyright
+
+Simplespace WordPress Theme, Copyright 2017 Xenos Konstantinos
+
+Simplespace is distributed under the terms of the GNU GPL
 
 #### Installation
 
