@@ -35,6 +35,11 @@ get_header();
 	<?php
 	}
 	?>
+	<?php wp_link_pages( array(
+		'before'      => '<div style="display:none;">',
+		'after'       => '</div>',
+	) );
+	?>
 	<div class="col-sm-12 blog-pagination">
 		<span class="pull-left"><?php echo previous_post_link( '%link', '<i class="fa fa-arrow-left"></i> Previous', true ); ?></span>
 		<span class="pull-right"><?php echo next_post_link( '%link', 'Next <i class="fa fa-arrow-right"></i>', true ); ?></span>
