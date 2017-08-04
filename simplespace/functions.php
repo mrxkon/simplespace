@@ -98,7 +98,7 @@ function simplespace_customize( $wp_customize )
 	$wp_customize->add_setting( 'simplespace_gravatar',
 		array(
 			'default' => '',
-			'sanitize_callback' => 'sanitize_customizer_email',
+			'sanitize_callback' => 'simplespace_sanitize_customizer_email',
 		)
 	);
 
@@ -114,7 +114,7 @@ function simplespace_customize( $wp_customize )
 	$wp_customize->add_setting( 'simplespace_404_img',
 		array(
 			'default' => '',
-			'sanitize_callback' => 'sanitize_customizer_url',
+			'sanitize_callback' => 'simplespace_sanitize_customizer_url',
 		)
 	);
 
@@ -131,7 +131,7 @@ function simplespace_customize( $wp_customize )
 	$wp_customize->add_setting( 'simplespace_portfolio_widget_title',
 		array(
 			'default' => '',
-			'sanitize_callback' => 'sanitize_customizer_text',
+			'sanitize_callback' => 'simplespace_sanitize_customizer_text',
 		)
 	);
 
@@ -147,7 +147,7 @@ function simplespace_customize( $wp_customize )
 	$wp_customize->add_setting( 'simplespace_top_widget_column',
 		array(
 			'default' => 'col-sm-6 col-md-3',
-			'sanitize_callback' => 'sanitize_customizer_select',
+			'sanitize_callback' => 'simplespace_sanitize_customizer_select',
 		)
 	);
 
@@ -169,7 +169,7 @@ function simplespace_customize( $wp_customize )
 	$wp_customize->add_setting( 'simplespace_bottom_widget_column',
 		array(
 			'default' => 'col-sm-6 col-md-3',
-			'sanitize_callback' => 'sanitize_customizer_select',
+			'sanitize_callback' => 'simplespace_sanitize_customizer_select',
 		)
 	);
 
@@ -191,7 +191,7 @@ function simplespace_customize( $wp_customize )
 	$wp_customize->add_setting( 'simplespace_footer_text',
 		array(
 			'default' => '',
-			'sanitize_callback' => 'sanitize_customizer_text',
+			'sanitize_callback' => 'simplespace_sanitize_customizer_text',
 		)
 	);
 
@@ -207,7 +207,7 @@ function simplespace_customize( $wp_customize )
 	$wp_customize->add_setting( 'simplespace_show_creds',
 		array(
 			'default' => 'yes',
-			'sanitize_callback' => 'sanitize_customizer_select',
+			'sanitize_callback' => 'simplespace_sanitize_customizer_select',
 		)
 	);
 
@@ -227,7 +227,7 @@ function simplespace_customize( $wp_customize )
 	$wp_customize->add_setting( 'simplespace_do_titles',
 		array(
 			'default' => 'yes',
-			'sanitize_callback' => 'sanitize_customizer_select',
+			'sanitize_callback' => 'simplespace_sanitize_customizer_select',
 		)
 	);
 
@@ -247,7 +247,7 @@ function simplespace_customize( $wp_customize )
 	$wp_customize->add_setting( 'simplespace_show_latest',
 		array(
 			'default' => 'yes',
-			'sanitize_callback' => 'sanitize_customizer_select',
+			'sanitize_callback' => 'simplespace_sanitize_customizer_select',
 		)
 	);
 
@@ -267,7 +267,7 @@ function simplespace_customize( $wp_customize )
 	$wp_customize->add_setting( 'simplespace_the_category',
 		array(
 			'default' => '',
-			'sanitize_callback' => 'sanitize_customizer_select',
+			'sanitize_callback' => 'simplespace_sanitize_customizer_select',
 		)
 	);
 
@@ -295,7 +295,7 @@ function simplespace_customize( $wp_customize )
 	$wp_customize->add_setting( 'simplespace_sm_wp',
 		array(
 			'default' => '',
-			'sanitize_callback' => 'sanitize_customizer_url',
+			'sanitize_callback' => 'simplespace_sanitize_customizer_url',
 		)
 	);
 
@@ -311,7 +311,7 @@ function simplespace_customize( $wp_customize )
 	$wp_customize->add_setting( 'simplespace_sm_git',
 		array(
 			'default' => '',
-			'sanitize_callback' => 'sanitize_customizer_url',
+			'sanitize_callback' => 'simplespace_sanitize_customizer_url',
 		)
 	);
 
@@ -327,7 +327,7 @@ function simplespace_customize( $wp_customize )
 	$wp_customize->add_setting( 'simplespace_sm_in',
 		array(
 			'default' => '',
-			'sanitize_callback' => 'sanitize_customizer_url',
+			'sanitize_callback' => 'simplespace_sanitize_customizer_url',
 		)
 	);
 
@@ -343,7 +343,7 @@ function simplespace_customize( $wp_customize )
 	$wp_customize->add_setting( 'simplespace_sm_da',
 		array(
 			'default' => '',
-			'sanitize_callback' => 'sanitize_customizer_url',
+			'sanitize_callback' => 'simplespace_sanitize_customizer_url',
 		)
 	);
 
@@ -359,7 +359,7 @@ function simplespace_customize( $wp_customize )
 	$wp_customize->add_setting( 'simplespace_sm_fb',
 		array(
 			'default' => '',
-			'sanitize_callback' => 'sanitize_customizer_url',
+			'sanitize_callback' => 'simplespace_sanitize_customizer_url',
 		)
 	);
 
@@ -375,7 +375,7 @@ function simplespace_customize( $wp_customize )
 	$wp_customize->add_setting( 'simplespace_sm_tt',
 		array(
 			'default' => '',
-			'sanitize_callback' => 'sanitize_customizer_url',
+			'sanitize_callback' => 'simplespace_sanitize_customizer_url',
 		)
 	);
 
@@ -391,7 +391,7 @@ function simplespace_customize( $wp_customize )
 	$wp_customize->add_setting( 'simplespace_sm_ig',
 		array(
 			'default' => '',
-			'sanitize_callback' => 'sanitize_customizer_url',
+			'sanitize_callback' => 'simplespace_sanitize_customizer_url',
 		)
 	);
 
@@ -407,7 +407,7 @@ function simplespace_customize( $wp_customize )
 	$wp_customize->add_setting( 'simplespace_sm_gp',
 		array(
 			'default' => '',
-			'sanitize_callback' => 'sanitize_customizer_url',
+			'sanitize_callback' => 'simplespace_sanitize_customizer_url',
 		)
 	);
 
@@ -438,25 +438,25 @@ function simplespace_get_category()
 	return $cats;
 }
 
-function sanitize_customizer_text( $value )
+function simplespace_sanitize_customizer_text( $value )
 {
 	$sanitized = sanitize_text_field( $value );
 	return $sanitized;
 }
 
-function sanitize_customizer_email( $value )
+function simplespace_sanitize_customizer_email( $value )
 {
 	$sanitized = sanitize_email( $value );
 	return $sanitized;
 }
 
-function sanitize_customizer_url( $value )
+function simplespace_sanitize_customizer_url( $value )
 {
 	$sanitized = esc_url( $value );
 	return $sanitized;
 }
 
-function sanitize_customizer_select( $value )
+function simplespace_sanitize_customizer_select( $value )
 {
 	$sanitized = sanitize_text_field( $value );
 	return $sanitized;
@@ -478,30 +478,30 @@ function simplespace_register_areas()
 	) );
 
 	if ( get_theme_mod( 'simplespace_top_widget_column' ) ) {
-		$topWidget = get_theme_mod( 'simplespace_top_widget_column' );
+		$top_widget_spacing = get_theme_mod( 'simplespace_top_widget_column' );
 	} else {
-		$topWidget = 'col-sm-6 col-md-3';
+		$top_widget_spacing = 'col-sm-6 col-md-3';
 	}
 
 	register_sidebar( array(
 		'name' => 'Top Widgets',
 		'id' => 'top_widgets',
-		'before_widget' => '<div class="' . $topWidget .' top-widget">',
+		'before_widget' => '<div class="' . $top_widget_spacing . ' top-widget">',
 		'after_widget' => '</div>',
 		'before_title' => '<h3>',
 		'after_title' => '</h3>',
 	) );
 
 	if ( get_theme_mod( 'simplespace_bottom_widget_column' ) ) {
-		$bottomWidget = get_theme_mod( 'simplespace_bottom_widget_column' );
+		$bottom_widget_spacing = get_theme_mod( 'simplespace_bottom_widget_column' );
 	} else {
-		$bottomWidget = 'col-sm-6 col-md-3';
+		$bottom_widget_spacing = 'col-sm-6 col-md-3';
 	}
 
 	register_sidebar( array(
 		'name' => 'Bottom Widgets',
 		'id' => 'bottom_widgets',
-		'before_widget' => '<div class="' . $bottomWidget .' bottom-widget">',
+		'before_widget' => '<div class="' . $bottom_widget_spacing . ' bottom-widget">',
 		'after_widget' => '</div>',
 		'before_title' => '<h3>',
 		'after_title' => '</h3>',
@@ -514,15 +514,15 @@ add_action( 'widgets_init', 'simplespace_register_areas' );
 /*-----------------------------------------------------------------------------------*/
 /* Ajax Calls
 /*-----------------------------------------------------------------------------------*/
-function fetch_index_post()
+function simplespace_fetch_index_post()
 {
-	$theCat = get_theme_mod( 'simplespace_the_category' );
-	if ( ! empty( $_REQUEST[ 'id' ] ) ) {
-		$post_id = $_REQUEST[ 'id' ];
+	$the_category = get_theme_mod( 'simplespace_the_category' );
+	if ( ! empty( $_REQUEST['id'] ) ) {
+		$post_id = $_REQUEST['id'];
 		$query = new WP_Query(
 			array(
 				'p' => $post_id,
-				'category_name' => $theCat,
+				'category_name' => $the_category,
 				'posts_per_page' => 1,
 			)
 		);
@@ -550,7 +550,7 @@ function fetch_index_post()
 	} else {
 		$query = new WP_Query(
 			array(
-				'category_name' => $theCat,
+				'category_name' => $the_category,
 				'posts_per_page' => 1,
 			)
 		);
@@ -627,16 +627,15 @@ function fetch_index_post()
 	die();
 }
 
-add_action( 'wp_ajax_fetch_index_post', 'fetch_index_post' );
-add_action( 'wp_ajax_nopriv_fetch_index_post', 'fetch_index_post' );
+add_action( 'wp_ajax_simplespace_fetch_index_post', 'simplespace_fetch_index_post' );
+add_action( 'wp_ajax_nopriv_simplespace_fetch_index_post', 'simplespace_fetch_index_post' );
 
 /*-----------------------------------------------------------------------------------*/
 /* Change Comments Output
 /*-----------------------------------------------------------------------------------*/
-function simplespace_comment( $comment, $args, $depth )
-{
+function simplespace_comment( $comment, $args, $depth ) {
 	echo '<div ';
-	echo comment_class( empty( $args[ 'has_children' ] ) ? '' : 'parent' );
+	echo comment_class( empty( $args['has_children'] ) ? '' : 'parent' );
 	echo ' id="comment-';
 	echo comment_ID();
 	echo '">';
@@ -645,8 +644,12 @@ function simplespace_comment( $comment, $args, $depth )
 	echo '" class="comment-body">';
 	echo '<div class="comment-author vcard">';
 	echo '<div class="comment-avatar">';
-	if ( $args[ 'avatar_size' ] != 0 ) {
-		echo get_avatar( $comment, '32', null, null, array( 'class' => array( 'img-circle' ) ) );
+	if ( $args['avatar_size'] != 0 ) {
+		echo get_avatar( $comment, '32', null, null,
+			array(
+				'class' => array( 'img-circle' ),
+			)
+		);
 	}
 	echo '</div>';
 	echo '<div class="comment-author-name">';
@@ -673,7 +676,7 @@ function simplespace_comment( $comment, $args, $depth )
 			array(
 				'add_below' => 'comment',
 				'depth' => $depth,
-				'max_depth' => $args[ 'max_depth' ]
+				'max_depth' => $args['max_depth'],
 			)
 		)
 	);
@@ -685,14 +688,14 @@ function simplespace_comment( $comment, $args, $depth )
 /*-----------------------------------------------------------------------------------*/
 /* Change Gallery Output
 /*-----------------------------------------------------------------------------------*/
-add_filter('post_gallery', 'ct_post_gallery', 10, 2);
-function ct_post_gallery( $output, $attr ) {
+function simplespace_ct_post_gallery( $output, $attr ) {
 	global $post;
 
 	if ( isset( $attr['orderby'] ) ) {
 		$attr['orderby'] = sanitize_sql_orderby( $attr['orderby'] );
-		if (!$attr['orderby'])
-			unset($attr['orderby']);
+		if ( ! $attr['orderby'] ) {
+			unset( $attr['orderby'] );
+		}
 	}
 
 	extract(shortcode_atts(array(
@@ -705,18 +708,29 @@ function ct_post_gallery( $output, $attr ) {
 		'columns' => 3,
 		'size' => 'thumbnail',
 		'include' => '',
-		'exclude' => ''
+		'exclude' => '',
 	), $attr));
 
-	$id = intval($id);
-	if ('RAND' == $order) $orderby = 'none';
+	$id = intval( $id );
+	if ( 'RAND' == $order ) {
+		$orderby = 'none';
+	}
 
-	if (!empty($include)) {
-		$include = preg_replace('/[^0-9,]+/', '', $include);
-		$_attachments = get_posts(array('include' => $include, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby));
+	if ( ! empty( $include ) ) {
+		$include = preg_replace( '/[^0-9,]+/', '', $include );
+		$_attachments = get_posts(
+			array(
+				'include' => $include,
+				'post_status' => 'inherit',
+				'post_type' => 'attachment',
+				'post_mime_type' => 'image',
+				'order' => $order,
+				'orderby' => $orderby,
+			)
+		);
 
 		$attachments = array();
-		foreach ($_attachments as $key => $val) {
+		foreach ( $_attachments as $key => $val ) {
 			$attachments[$val->ID] = $_attachments[$key];
 		}
 	}
@@ -754,3 +768,4 @@ function ct_post_gallery( $output, $attr ) {
 
 	return $output;
 }
+add_filter('post_gallery', 'simplespace_ct_post_gallery', 10, 2);
