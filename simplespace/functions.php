@@ -28,7 +28,7 @@ function simplespace_setup() {
 	add_theme_support( 'custom-logo' );
 	add_editor_style(
 		array(
-			'bootstrap/css/bootstrap.css',
+			'bootstrap/css/bootstrap.min.css',
 			'css/sp-editor.css',
 		)
 	);
