@@ -16,8 +16,8 @@ if ( is_active_sidebar( 'bottom_widgets' ) ) {
 		if ( get_theme_mod( 'simplespace_show_creds' ) ) {
 		?>
 		<br/>
-		<a href="https://xkon.gr/simplespace/">Simplespace</a> by
-		<a href="https://xkon.gr">Xenos (xkon) Konstantinos</a>
+		<a href="<?php echo esc_url( SIMPLESPACE_THEME_URL ); ?>">Simplespace</a> by
+		<a href="<?php echo esc_url( SIMPLESPACE_AUTHOR_URL ); ?>">Xenos (xkon) Konstantinos</a>
 		<br/>
 		<a href="https://wordpress.org/" title="A Semantic Personal Publishing Platform">Proudly powered by WordPress</a>
 		<?php

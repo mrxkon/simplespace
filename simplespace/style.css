@@ -176,9 +176,12 @@ hr {
 
 #header {
 	margin-top: 3rem;
-	margin-bottom: 3rem;
-	padding-top: 3rem;
-	padding-bottom: 3rem;
+	margin-bottom: 6rem;
+}
+
+#header-image .col-sm-12 {
+	margin: 0 0 1rem 0 !important;
+	padding:0 !important;
 }
 
 #gravatar {

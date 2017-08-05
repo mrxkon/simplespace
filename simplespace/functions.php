@@ -13,6 +13,8 @@ define( 'WHITESPACE_VERSION', '1.0.1' );
 define( 'BOOTSTRAP_VERSION', '3.3.7' );
 define( 'SWIPEBOX_VERSION', '1.4.4' );
 define( 'MATCHHEIGHT_VERSION', '0.7.2' );
+define( 'SIMPLESPACE_THEME_URL', 'https://xkon.gr/simplespace' );
+define( 'SIMPLESPACE_AUTHOR_URL', 'https://xkon.gr/' );
 
 /*-----------------------------------------------------------------------------------*/
 /* Add theme supports
@@ -27,6 +29,7 @@ function simplespace_setup() {
 	add_theme_support( 'title-tag' );
 	add_theme_support( 'custom-logo' );
 	add_theme_support( 'custom-background' );
+	add_theme_support( 'custom-header' );
 	add_editor_style(
 		array(
 			'bootstrap/css/bootstrap.min.css',

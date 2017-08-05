@@ -9,6 +9,16 @@
 </head>
 <body <?php body_class(); ?>>
 <div class="container">
+	<?php
+	if ( has_header_image() ) {
+		$title = esc_attr( get_bloginfo( 'title' ) );
+	?>
+	<div id="header-image" class="row">
+		<div class="col-sm-12">
+			<img src="<?php header_image(); ?>" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="<?php echo esc_attr( $title ); ?>" />
+		</div>
+	</div>
+	<?php } ?>
 	<div id="header" class="row">
 		<div class="col-sm-12">
 			<div id="gravatar">
@@ -20,10 +30,20 @@
 				} elseif ( get_theme_mod( 'simplespace_gravatar' ) ) {
 					$admin_email = get_theme_mod( 'simplespace_gravatar' );
 					$default = 'gravatar_default';
-					echo get_avatar( $admin_email, '100', null, null, array( 'class' => array( 'img-circle' ) ) );
+					$title = esc_attr( get_bloginfo( 'title' ) );
+					echo get_avatar( $admin_email, '100', null, esc_attr( $title ),
+						array(
+							'class' => array( 'img-circle' ),
+						)
+					);
 				} else {
 					$admin_email = get_option( 'admin_email' );
-					echo get_avatar( $admin_email, '100', null, null, array( 'class' => array( 'img-circle' ) ) );
+					$title = esc_attr( get_bloginfo( 'title' ) );
+					echo get_avatar( $admin_email, '100', null, esc_attr( $title ),
+						array(
+							'class' => array( 'img-circle' ),
+						)
+					);
 				}
 				?>
 			</div>
