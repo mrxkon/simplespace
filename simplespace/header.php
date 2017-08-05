@@ -15,7 +15,7 @@
 	?>
 	<div id="header-image" class="row">
 		<div class="col-sm-12">
-			<img src="<?php header_image(); ?>" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="<?php echo esc_attr( $title ); ?>" />
+			<img src="<?php header_image(); ?>" height="<?php echo intval( get_custom_header()->height ); ?>" width="<?php echo intval( get_custom_header()->width ); ?>" alt="<?php echo esc_attr( $title ); ?>" />
 		</div>
 	</div>
 	<?php } ?>
