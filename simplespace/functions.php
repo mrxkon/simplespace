@@ -212,6 +212,28 @@ function simplespace_customize( $wp_customize )
 		)
 	);
 
+
+	$wp_customize->add_setting( 'simplespace_the_category_column',
+		array(
+			'default' => 'col-sm-4',
+			'sanitize_callback' => 'simplespace_sanitize_customizer_select',
+		)
+	);
+
+	$wp_customize->add_control(
+		'simplespace_the_category_column', array(
+			'label' => __( 'Category Columns', 'simplespace' ),
+			'section' => 'simplespace_options',
+			'settings' => 'simplespace_the_category_column',
+			'type' => 'select',
+			'choices' => array(
+				'col-sm-12' => __( 'One Column', 'simplespace' ),
+				'col-sm-6' => __( 'Two Columns', 'simplespace' ),
+				'col-sm-4' => __( 'Three Columns', 'simplespace' ),
+			),
+		)
+	);
+
 	$wp_customize->add_setting( 'simplespace_footer_text',
 		array(
 			'default' => '',

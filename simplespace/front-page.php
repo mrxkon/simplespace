@@ -61,7 +61,7 @@ get_header();
 		while ( $query->have_posts() ) {
 			$query->the_post();
 
-			echo '<div class="cvworks ' . esc_attr( $the_post_column ) . '">';
+			echo '<div class="list-post-holder ' . esc_attr( $the_post_column ) . '">';
 			echo '<div class="ajax-post_image">' . get_the_post_thumbnail( get_the_ID(), 'full', array( 'class' => 'img-responsive' ) ) . '</div>';
 			echo '<div class="ajax-post-title"><h3><a href="' . esc_url( get_the_permalink() ) . '" title="' . get_the_title() . '">' . get_the_title() . '</a></h3></div> ';
 			echo '<div class="ajax-post-description">' . the_excerpt() . '</div> ';

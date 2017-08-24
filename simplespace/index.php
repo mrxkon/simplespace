@@ -19,10 +19,25 @@ if ( is_tag() ) {
 		</h1>
 	</div>
 	<?php
+
+	if ( get_theme_mod( 'simplespace_the_category_column' ) ) {
+		$the_category_column = get_theme_mod( 'simplespace_the_category_column' );
+	} else {
+		$the_category_column = 'col-sm-4';
+	}
+
+	if ( 'col-sm-4' == $the_category_column || 'col-sm-12' == $the_category_column ) {
+		$row_count = 3;
+	} elseif ( 'col-sm-6' == $the_category_column ) {
+		$row_count = 2;
+	}
+
+	echo '<div class="row">';
+	$count = 1;
 	while ( have_posts() ) {
 		the_post();
 	?>
-	<div class="grid-item list-post-holder col-sm-12">
+	<div class="list-post-holder <?php echo esc_attr( $the_category_column ); ?>">
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<div class="post-image"><?php the_post_thumbnail( 'full', array( 'class' => 'img-responsive', 'title' => get_the_title(), 'alt' => get_the_title() ) ); ?></div>
 			<h1 class="post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
@@ -36,7 +51,12 @@ if ( is_tag() ) {
 		</article>
 	</div>
 	<?php
+	if ( 0 == $count % $row_count ) {
+		echo '</div><div class="row">';
 	}
+	$count++;
+	}
+	echo '</div>';
 	?>
 	<div class="col-sm-12 blog-pagination">
 		<?php
