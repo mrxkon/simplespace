@@ -2,10 +2,6 @@
 
 	"use strict";
 
-	// $( function() {
-	// 	$( '.the-content' ).fitVids();
-	// });
-
 	$( 'a[href*=\\#toppage]' ).on( 'click', function ( event ) {
 		event.preventDefault();
 		$( 'html, body' ).animate( {
@@ -14,7 +10,6 @@
 		return false;
 	} );
 
-	// Sidebar Pagination Links
 	$( document ).ready( function () {
 
 		$( '.swipebox' ).swipebox();
@@ -26,6 +21,7 @@
 		$( '.gall-img' ).matchHeight( false );
 
 		$( 'table' ).addClass( 'table table-hover' );
+		$( 'table' ).wrap('<div class="table-responsive"></div>');
 
 		$( 'img' ).addClass( 'img-responsive' );
 
@@ -46,7 +42,6 @@
 		$allVideos.each( function () {
 
 			$( this )
-			// jQuery .data does not work on object/embed elements
 				.attr( 'data-aspectRatio', this.height / this.width )
 				.removeAttr( 'height' )
 				.removeAttr( 'width' );

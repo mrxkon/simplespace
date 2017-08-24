@@ -54,50 +54,63 @@
 					</h1>
 					<span><?php echo esc_html( get_bloginfo( 'description' ) ); ?></span>
 				</div>
-				<div class="social-media-icons">
+				<?php
+				if ( 'yes' == get_theme_mod( 'simplespace_sm_show_details' ) ) {
+				?>
+				<div class="contact-details">
 					<?php
-					if ( get_theme_mod( 'simplespace_sm_wp' ) ) {
-						echo '<a href="' . esc_url( get_theme_mod( 'simplespace_sm_wp' ) ) .
-							'" title="' . esc_attr( 'Find me on WordPress', 'simplespace' ) .
-							'"><i class="fa fa-wordpress"></i></a>';
+					if ( get_theme_mod( 'simplespace_sm_birthdate' ) ) {
+						echo '<i class="fa fa-calendar"></i> ' . esc_attr( get_theme_mod( 'simplespace_sm_birthdate' ) ) . '</br>';
 					}
-					if ( get_theme_mod( 'simplespace_sm_git' ) ) {
-						echo ' <a href="' . esc_url( get_theme_mod( 'simplespace_sm_git' ) ) .
-							'" title="' . esc_attr( 'Find me on GitHub', 'simplespace' ) .
-							'"><i class="fa fa-github"></i></a>';
+					if ( get_theme_mod( 'simplespace_sm_address' ) ) {
+						echo '<i class="fa fa-map-marker"></i> ' . esc_attr( get_theme_mod( 'simplespace_sm_address' ) ) . '</br>';
 					}
-					if ( get_theme_mod( 'simplespace_sm_in' ) ) {
-						echo ' <a href="' . esc_url( get_theme_mod( 'simplespace_sm_in' ) ) .
-							'" title="' . esc_attr( 'Find me on LinkedIn', 'simplespace' ) .
-							'"><i class="fa fa-linkedin"></i></a>';
+					if ( get_theme_mod( 'simplespace_sm_cphone' ) ) {
+						echo '<i class="fa fa-phone"></i> <a href="tel:' . esc_attr( get_theme_mod( 'simplespace_sm_cphone' ) ) . '" title="' . esc_attr( get_theme_mod( 'simplespace_sm_cphone' ) ) . '">' . esc_attr( get_theme_mod( 'simplespace_sm_cphone' ) ) . '</a></br>';
 					}
-					if ( get_theme_mod( 'simplespace_sm_da' ) ) {
-						echo ' <a href="' . esc_url( get_theme_mod( 'simplespace_sm_da' ) ) .
-							'" title="' . esc_attr( 'Find me on DeviantArt', 'simplespace' ) .
-							'"><i class="fa fa-deviantart"></i></a>';
+					if ( get_theme_mod( 'simplespace_sm_cemail' ) ) {
+						echo '<i class="fa fa-envelope-o"></i> <a href="mailto:' . esc_attr( get_theme_mod( 'simplespace_sm_cemail' ) ) . '" title="' . esc_attr( get_theme_mod( 'simplespace_sm_cemail' ) ) . '">' . esc_attr( get_theme_mod( 'simplespace_sm_cemail' ) ) . '</a></br>';
 					}
-					if ( get_theme_mod( 'simplespace_sm_fb' ) ) {
-						echo ' <a href="' . esc_url( get_theme_mod( 'simplespace_sm_fb' ) ) .
-							'" title="' . esc_attr( 'Find me on Facebook', 'simplespace' ) .
-							'"><i class="fa fa-facebook"></i></a>';
-					}
-					if ( get_theme_mod( 'simplespace_sm_tt' ) ) {
-						echo ' <a href="' . esc_url( get_theme_mod( 'simplespace_sm_tt' ) ) .
-							'" title="' . esc_attr( 'Find me on Twitter', 'simplespace' ) .
-							'"><i class="fa fa-twitter"></i></a>';
-					}
-					if ( get_theme_mod( 'simplespace_sm_ig' ) ) {
-						echo ' <a href="' . esc_url( get_theme_mod( 'simplespace_sm_ig' ) ) .
-							'" title="' . esc_attr( 'Find me on Instagram', 'simplespace' ) .
-							'"><i class="fa fa-instagram"></i></a>';
-					}
-					if ( get_theme_mod( 'simplespace_sm_gp' ) ) {
-						echo ' <a href="' . esc_url( get_theme_mod( 'simplespace_sm_gp' ) ) .
-							'" title="' . esc_attr( 'Find me on Google+', 'simplespace' ) .
-							'"><i class="fa fa-google-plus"></i></a>';
+					if ( get_theme_mod( 'simplespace_sm_cskype' ) ) {
+						echo '<i class="fa fa-skype"></i> ' . esc_attr( get_theme_mod( 'simplespace_sm_cskype' ) );
 					}
 					?>
 				</div>
+				<?php
+				}
+				if ( 'yes' == get_theme_mod( 'simplespace_sm_show_sicons' ) ) {
+				?>
+				<div class="social-media-icons">
+					<?php
+					if ( get_theme_mod( 'simplespace_sm_wp' ) ) {
+						echo '<a href="' . esc_url( get_theme_mod( 'simplespace_sm_wp' ) ) . '" title="' . esc_attr( 'Find me on WordPress', 'simplespace' ) . '"><i class="fa fa-wordpress"></i></a>';
+					}
+					if ( get_theme_mod( 'simplespace_sm_git' ) ) {
+						echo ' <a href="' . esc_url( get_theme_mod( 'simplespace_sm_git' ) ) . '" title="' . esc_attr( 'Find me on GitHub', 'simplespace' ) . '"><i class="fa fa-github"></i></a>';
+					}
+					if ( get_theme_mod( 'simplespace_sm_in' ) ) {
+						echo ' <a href="' . esc_url( get_theme_mod( 'simplespace_sm_in' ) ) . '" title="' . esc_attr( 'Find me on LinkedIn', 'simplespace' ) . '"><i class="fa fa-linkedin"></i></a>';
+					}
+					if ( get_theme_mod( 'simplespace_sm_da' ) ) {
+						echo ' <a href="' . esc_url( get_theme_mod( 'simplespace_sm_da' ) ) . '" title="' . esc_attr( 'Find me on DeviantArt', 'simplespace' ) . '"><i class="fa fa-deviantart"></i></a>';
+					}
+					if ( get_theme_mod( 'simplespace_sm_fb' ) ) {
+						echo ' <a href="' . esc_url( get_theme_mod( 'simplespace_sm_fb' ) ) . '" title="' . esc_attr( 'Find me on Facebook', 'simplespace' ) . '"><i class="fa fa-facebook"></i></a>';
+					}
+					if ( get_theme_mod( 'simplespace_sm_tt' ) ) {
+						echo ' <a href="' . esc_url( get_theme_mod( 'simplespace_sm_tt' ) ) . '" title="' . esc_attr( 'Find me on Twitter', 'simplespace' ) . '"><i class="fa fa-twitter"></i></a>';
+					}
+					if ( get_theme_mod( 'simplespace_sm_ig' ) ) {
+						echo ' <a href="' . esc_url( get_theme_mod( 'simplespace_sm_ig' ) ) . '" title="' . esc_attr( 'Find me on Instagram', 'simplespace' ) . '"><i class="fa fa-instagram"></i></a>';
+					}
+					if ( get_theme_mod( 'simplespace_sm_gp' ) ) {
+						echo ' <a href="' . esc_url( get_theme_mod( 'simplespace_sm_gp' ) ) . '" title="' . esc_attr( 'Find me on Google+', 'simplespace' ) . '"><i class="fa fa-google-plus"></i></a>';
+					}
+					?>
+				</div>
+				<?php
+				}
+				?>
 			</div>
 		</div>
 	</div>

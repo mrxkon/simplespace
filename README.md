@@ -6,7 +6,7 @@ Requires at least: WordPress 4.7
 
 Tested up to: WordPress 4.8.1
 
-Version: 1.0.2
+Version: 1.0.3
 
 License: GPLv2 or later
 
@@ -47,6 +47,10 @@ may be, individually noted below.
 5. Navigate to Appearance > Customize in your admin panel and customize to taste.
 
 #### Changelog
+
+##### 1.0.3
+Responsive Tables
+More Customization Options
 
 ##### 1.0.2
 Custom Header Image

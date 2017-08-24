@@ -9,7 +9,7 @@ if ( ! defined( 'WPINC' ) ) {
 /*-----------------------------------------------------------------------------------*/
 /* Define the version as a constant so we can easily replace it throughout the theme
 /*-----------------------------------------------------------------------------------*/
-define( 'WHITESPACE_VERSION', '1.0.1' );
+define( 'WHITESPACE_VERSION', '1.0.3' );
 define( 'BOOTSTRAP_VERSION', '3.3.7' );
 define( 'SWIPEBOX_VERSION', '1.4.4' );
 define( 'MATCHHEIGHT_VERSION', '0.7.2' );
@@ -97,13 +97,6 @@ function simplespace_scripts()
 
 	wp_enqueue_script( 'simplespace-scripts', get_template_directory_uri() . '/js/scripts.js', array( 'jquery' ), WHITESPACE_VERSION, true );
 
-	wp_enqueue_script( 'simplespace-ajax-request', get_template_directory_uri() . '/js/ajax.js', array( 'jquery' ), WHITESPACE_VERSION );
-
-	wp_localize_script( 'simplespace-ajax-request', 'simplespaceAjax',
-		array(
-			'ajaxurl' => admin_url( 'admin-ajax.php' ),
-		)
-	);
 }
 
 add_action( 'wp_enqueue_scripts', 'simplespace_scripts' );
@@ -284,13 +277,50 @@ function simplespace_customize( $wp_customize )
 
 	$wp_customize->add_control(
 		'simplespace_show_latest', array(
-			'label' => __( 'Show Latest on Front Page', 'simplespace' ),
+			'label' => __( 'Show Porfolio on Front Page', 'simplespace' ),
 			'section' => 'simplespace_options',
 			'settings' => 'simplespace_show_latest',
 			'type' => 'select',
 			'choices' => array(
 				'yes' => __( 'Yes', 'simplespace' ),
 				'no' => __( 'No', 'simplespace' ),
+			),
+		)
+	);
+
+	$wp_customize->add_setting( 'simplespace_latestposts_number',
+		array(
+			'default' => '6',
+			'sanitize_callback' => 'simplespace_sanitize_customizer_text',
+		)
+	);
+
+	$wp_customize->add_control(
+		'simplespace_latestposts_number', array(
+			'label' => __( 'Number of Portfolio articles', 'simplespace' ),
+			'section' => 'simplespace_options',
+			'settings' => 'simplespace_latestposts_number',
+			'type' => 'text',
+		)
+	);
+
+	$wp_customize->add_setting( 'simplespace_the_post_column',
+		array(
+			'default' => 'col-sm-4',
+			'sanitize_callback' => 'simplespace_sanitize_customizer_select',
+		)
+	);
+
+	$wp_customize->add_control(
+		'simplespace_the_post_column', array(
+			'label' => __( 'Porfolio Columns', 'simplespace' ),
+			'section' => 'simplespace_options',
+			'settings' => 'simplespace_the_post_column',
+			'type' => 'select',
+			'choices' => array(
+				'col-sm-12' => __( 'One Column', 'simplespace' ),
+				'col-sm-6' => __( 'Two Columns', 'simplespace' ),
+				'col-sm-4' => __( 'Three Columns', 'simplespace' ),
 			),
 		)
 	);
@@ -305,7 +335,7 @@ function simplespace_customize( $wp_customize )
 	$wp_customize->add_control(
 		'simplespace_the_category', array(
 			'settings' => 'simplespace_the_category',
-			'label' => 'Select Category:',
+			'label' => 'Porfolio Category:',
 			'section' => 'simplespace_options',
 			'type' => 'select',
 			'choices' => simplespace_get_category(),
@@ -317,9 +347,129 @@ function simplespace_customize( $wp_customize )
 	$wp_customize->add_section(
 		'simplespace_social_media',
 		array(
-			'title' => __( 'Social Media Links', 'simplespace' ),
+			'title' => __( 'Contact Details', 'simplespace' ),
 			'priority' => 100,
 			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_setting( 'simplespace_sm_show_details',
+		array(
+			'default' => 'no',
+			'sanitize_callback' => 'simplespace_sanitize_customizer_select',
+		)
+	);
+
+	$wp_customize->add_control(
+		'simplespace_sm_show_details', array(
+			'label' => __( 'Show Details', 'simplespace' ),
+			'section' => 'simplespace_social_media',
+			'settings' => 'simplespace_sm_show_details',
+			'type' => 'select',
+			'choices' => array(
+				'yes' => __( 'Yes', 'simplespace' ),
+				'no' => __( 'No', 'simplespace' ),
+			),
+		)
+	);
+
+	$wp_customize->add_setting( 'simplespace_sm_birthdate',
+		array(
+			'default' => '',
+			'sanitize_callback' => 'simplespace_sanitize_customizer_text',
+		)
+	);
+
+	$wp_customize->add_control(
+		'simplespace_sm_birthdate', array(
+			'label' => __( 'Birthdate', 'simplespace' ),
+			'section' => 'simplespace_social_media',
+			'settings' => 'simplespace_sm_birthdate',
+			'type' => 'text',
+		)
+	);
+
+	$wp_customize->add_setting( 'simplespace_sm_address',
+		array(
+			'default' => '',
+			'sanitize_callback' => 'simplespace_sanitize_customizer_text',
+		)
+	);
+
+	$wp_customize->add_control(
+		'simplespace_sm_address', array(
+			'label' => __( 'Address', 'simplespace' ),
+			'section' => 'simplespace_social_media',
+			'settings' => 'simplespace_sm_address',
+			'type' => 'text',
+		)
+	);
+
+	$wp_customize->add_setting( 'simplespace_sm_cemail',
+		array(
+			'default' => '',
+			'sanitize_callback' => 'simplespace_sanitize_customizer_email',
+		)
+	);
+
+	$wp_customize->add_control(
+		'simplespace_sm_cemail', array(
+			'label' => __( 'Email', 'simplespace' ),
+			'section' => 'simplespace_social_media',
+			'settings' => 'simplespace_sm_cemail',
+			'type' => 'email',
+		)
+	);
+
+	$wp_customize->add_setting( 'simplespace_sm_cphone',
+		array(
+			'default' => '',
+			'sanitize_callback' => 'simplespace_sanitize_customizer_text',
+		)
+	);
+
+	$wp_customize->add_control(
+		'simplespace_sm_cphone', array(
+			'label' => __( 'Phone', 'simplespace' ),
+			'section' => 'simplespace_social_media',
+			'settings' => 'simplespace_sm_cphone',
+			'type' => 'text',
+		)
+	);
+
+	$wp_customize->add_setting( 'simplespace_sm_cskype',
+		array(
+			'default' => '',
+			'sanitize_callback' => 'simplespace_sanitize_customizer_text',
+		)
+	);
+
+	$wp_customize->add_control(
+		'simplespace_sm_cskype', array(
+			'label' => __( 'Skype', 'simplespace' ),
+			'section' => 'simplespace_social_media',
+			'settings' => 'simplespace_sm_cskype',
+			'type' => 'text',
+		)
+	);
+
+	$wp_customize->add_setting( 'simplespace_sm_show_sicons',
+		array(
+			'default' => 'no',
+			'sanitize_callback' => 'simplespace_sanitize_customizer_select',
+		)
+	);
+
+	$wp_customize->add_control(
+		'simplespace_sm_show_sicons', array(
+			'label' => __( 'Show Social Icons', 'simplespace' ),
+			'section' => 'simplespace_social_media',
+			'settings' => 'simplespace_sm_show_sicons',
+			'type' => 'select',
+			'choices' => array(
+				'yes' => __( 'Yes', 'simplespace' ),
+				'no' => __( 'No', 'simplespace' ),
+			),
 		)
 	);
 
@@ -499,15 +649,6 @@ function simplespace_sanitize_customizer_select( $value )
 function simplespace_register_areas()
 {
 
-	register_sidebar( array(
-		'name' => 'Sidebar',
-		'id' => 'sidebar',
-		'before_widget' => '<div class="col-sm-12 sidebar-widget">',
-		'after_widget' => '</div>',
-		'before_title' => '<h3>',
-		'after_title' => '</h3>',
-	) );
-
 	if ( get_theme_mod( 'simplespace_top_widget_column' ) ) {
 		$top_widget_spacing = get_theme_mod( 'simplespace_top_widget_column' );
 	} else {
@@ -541,129 +682,6 @@ function simplespace_register_areas()
 }
 
 add_action( 'widgets_init', 'simplespace_register_areas' );
-
-/*-----------------------------------------------------------------------------------*/
-/* Ajax Calls
-/*-----------------------------------------------------------------------------------*/
-function simplespace_fetch_index_post()
-{
-	$the_category = get_theme_mod( 'simplespace_the_category' );
-	if ( ! empty( $_REQUEST['id'] ) ) {
-		$post_id = intval( $_REQUEST['id'] );
-		$query = new WP_Query(
-			array(
-				'p' => $post_id,
-				'category_name' => $the_category,
-				'posts_per_page' => 1,
-			)
-		);
-		while ( $query->have_posts() ) {
-			$query->the_post();
-			echo '<div class="ajax-post_image">' . get_the_post_thumbnail( get_the_ID(), 'full', array( 'class' => 'img-responsive' ) ) . '</div>';
-			echo '<div class="ajax-post-title"><h3><a href="' . esc_url( get_the_permalink() ) . '" title="' . get_the_title() . '">' . get_the_title() . '</a></h3></div> ';
-			echo '<div class="ajax-post-description">' . the_excerpt() . '</div> ';
-			echo '<div class="ajax-post-date"><i class="fa fa-calendar"></i> ' . get_the_date() . '</div>';
-			echo '<div class="ajax-post-category"><i class="fa fa-th-list"></i> ';
-			the_category( ', ' );
-			echo '</div>';
-			echo '<div class="ajax-post-tags">';
-			the_tags( '<i class="fa fa-tag"></i> ' );
-			echo '</div> ';
-			echo '<div class="ajax-post-pagination">';
-			$prev_post = get_previous_post( true );
-			$next_post = get_next_post( true );
-			if ( ! empty( $prev_post ) ) {
-				echo '<a href="#" class="pull-left ajax-prev-post" data-id="' . intval( $prev_post->ID ) . '"><i class="fa fa-arrow-left"></i> ' . esc_attr( 'Previous', 'simplespace' ) . '</a>';
-			}
-			if ( ! empty( $next_post ) ) {
-				echo '<a href="#" class="pull-right ajax-next-post" data-id="' . intval( $next_post->ID ) . '">' . esc_attr( 'Next', 'simplespace' ) . ' <i class="fa fa-arrow-right"></i></a>';
-			}
-			echo '</div>';
-		}
-	} else {
-		$query = new WP_Query(
-			array(
-				'category_name' => $the_category,
-				'posts_per_page' => 1,
-			)
-		);
-		while ( $query->have_posts() ) {
-			$query->the_post();
-			echo '<div class="ajax-post_image">' . get_the_post_thumbnail( get_the_ID(), 'full', array( 'class' => 'img-responsive' ) ) . '</div>';
-			echo '<div class="ajax-post-title"><h3><a href="' . esc_url( get_the_permalink() ) . '" title="' . get_the_title() . '">' . get_the_title() . '</a></h3></div> ';
-			echo '<div class="ajax-post-description">' . the_excerpt() . '</div> ';
-			echo '<div class="ajax-post-date"><i class="fa fa-calendar"></i> ' . get_the_date() . '</div>';
-			echo '<div class="ajax-post-category"><i class="fa fa-th-list"></i> ';
-			the_category( ', ' );
-			echo '</div>';
-			echo '<div class="ajax-post-tags">';
-			the_tags( '<i class="fa fa-tag"></i> ' );
-			echo '</div> ';
-			echo '<div class="ajax-post-pagination">';
-			$prev_post = get_previous_post( true );
-			$next_post = get_next_post( true );
-			if ( ! empty( $prev_post ) ) {
-				echo '<a href="#" class="pull-left ajax-prev-post" data-id="' . intval( $prev_post->ID ) . '"><i class="fa fa-arrow-left"></i> ' . esc_attr( 'Previous', 'simplespace' ) . '</a>';
-			}
-			if ( ! empty( $next_post ) ) {
-				echo '<a href="#" class="pull-right ajax-next-post" data-id="' . intval( $next_post->ID ) . '">' . esc_attr( 'Next', 'simplespace' ) . ' <i class="fa fa-arrow-right"></i></a>';
-			}
-			echo '</div>';
-		}
-	}
-	echo "<script>
-					/* <![CDATA[ */
-					(function($){
-						$('.ajax-prev-post').on('click', function ( event ) {
-							event.preventDefault();
-							var id = $( this ).data( 'id' );
-							getPrevPost(id);
-						});
-						
-						$('.ajax-next-post').on('click', function ( event ) {
-							event.preventDefault();
-							var id = $( this ).data( 'id' );
-							getNextPost(id);
-						});
-						
-						function getPrevPost(id) {
-
-							$.ajax({
-								url: simplespaceAjax.ajaxurl,
-								data: {
-									'action' : 'simplespace_fetch_index_post',
-									'id' : id
-								},
-								success:function(data) {
-									$('#ajax-post-content').html(data);
-								}
-							});
-						};
-				
-						function getNextPost() {
-				
-							var id = $('.ajax-next-post').data('id');
-				
-							$.ajax({
-								url: simplespaceAjax.ajaxurl,
-								data: {
-									'action' : 'simplespace_fetch_index_post',
-									'id' : id
-								},
-								success:function(data) {
-									$('#ajax-post-content').html(data);
-								}
-							});
-						};
-						
-					})(jQuery)
-					/* ]]> */
-				</script>";
-	die();
-}
-
-add_action( 'wp_ajax_simplespace_fetch_index_post', 'simplespace_fetch_index_post' );
-add_action( 'wp_ajax_nopriv_simplespace_fetch_index_post', 'simplespace_fetch_index_post' );
 
 /*-----------------------------------------------------------------------------------*/
 /* Change Comments Output

@@ -4,7 +4,7 @@
  * Author:          Xenos (xkon) Konstantinos
  * Author URI:      https://xkon.gr/
  * Description:     A simple, fast and beautiful whitespace theme.
- * Version:         1.0.2
+ * Version:         1.0.3
  * License:         GPL-2.0+
  * License URI:     http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:     simplespace
@@ -172,6 +172,10 @@ hr {
 	clear: both;
 }
 
+.cvworks {
+	margin-bottom: 3rem;
+}
+
 /* Header */
 
 #header {
@@ -181,21 +185,27 @@ hr {
 
 #header-image .col-sm-12 {
 	margin: 0 0 1rem 0 !important;
-	padding:0 !important;
+	padding: 0 !important;
 }
 
 #gravatar {
 	overflow: hidden;
-	width: 100px;
-	height: 100px;
+	width: 100%;
 	margin: 0;
-	float: left;
+	clear: both;
+	margin-bottom: 1rem;
+}
+
+#gravatar img {
+	height: 100px;
+	margin: 0 auto;
 }
 
 #brand {
 	float: right;
-	width: calc(100% - 120px);
-	padding-left: 20px;
+	width: 100%;
+	clear: both;
+	text-align: center;
 	margin-top: 5px;
 }
 
@@ -265,6 +275,12 @@ hr {
 /* Social Media Icons */
 .social-media-icons {
 	font-size: 1.5em;
+	margin-top: 2rem;
+}
+
+.contact-details {
+	font-size: 14px;
+	margin-top: 2rem;
 }
 
 .social-media-icons a {
