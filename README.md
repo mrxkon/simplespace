@@ -50,11 +50,14 @@ may be, individually noted below.
 
 ##### 1.0.3
 Responsive Tables
+
 More Customization Options
 
 ##### 1.0.2
 Custom Header Image
+
 Custom Background
+
 Editor Styles
 
 ##### 1.0.1
